@@ -1,0 +1,13 @@
+{
+  "name": "int222-advanced-web-development",
+  "version": "1.0.0",
+  "description": "classwork",
+  "license": "ISC",
+  "author": "V1per",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "start",
+    "start": "node server.js"
+  }
+}
