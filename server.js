@@ -34,3 +34,17 @@ if (ax < bx) {
 // To load a saved file in REPL, you can use the `.load filename.js` command.
 // Example: `.load mySession.js` will load and execute the code from `mySession.js` in your current REPL session.
 // You can exit REPL by typing `.exit` or pressing Ctrl+C twice.
+
+
+//class 2:-
+
+//what is modules?
+// Modules in Node.js are reusable pieces of code that can be imported and used in other files.
+// They help in organizing code and managing dependencies.
+// Example: You can create a module in a file named `math.js` and export functions like addition and subtraction.
+// Then, you can import and use these functions in another file using `require('./math')`.
+
+//types of modules
+// 1. Core Modules: Built-in modules that come with Node.js, such as `fs`, `http`, and `path`.
+// 2. Local Modules: Custom modules created by you in your project.
+// 3. Third-Party Modules: Modules installed from npm (Node Package Manager), such as `express`, `lodash`, etc.

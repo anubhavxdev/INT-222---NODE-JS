@@ -1,0 +1,2 @@
+Hello Anubhav! This is your first file operation in Node.js.
+This line is appended to the file.

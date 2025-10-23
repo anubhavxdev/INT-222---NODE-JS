@@ -4,10 +4,13 @@
   "description": "classwork",
   "license": "ISC",
   "author": "V1per",
-  "type": "commonjs",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "test": "start",
     "start": "node server.js"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.10"
   }
 }
