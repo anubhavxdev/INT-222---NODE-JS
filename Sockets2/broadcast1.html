@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broadcast Server</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #messages {
+            background: #fff;
+            height: 350px;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .msg {
+            padding: 10px;
+            margin: 8px 0;
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>📡 Real-Time Broadcast Server</h2>
+
+    <div id="messages"></div>
+
+    <!-- Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+        const box = document.getElementById("messages");
+
+        // Function to print messages
+        function addMessage(text) {
+            const div = document.createElement("div");
+            div.classList.add("msg");
+            div.textContent = text;
+            box.appendChild(div);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        // Welcome message for new user
+        socket.on("welcome", (msg) => {
+            addMessage("🟢 " + msg);
+        });
+
+        // Someone joined
+        socket.on("user-joined", (msg) => {
+            addMessage("🟡 " + msg);
+        });
+
+        // Someone left
+        socket.on("user-left", (msg) => {
+            addMessage("🔴 " + msg);
+        });
+    </script>
+
+</body>
+</html>

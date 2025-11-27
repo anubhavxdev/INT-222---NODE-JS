@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Client</title>
+</head>
+<body>
+    <h1>Socket.IO Client</h1>
+    <ul id="messages"></ul>
+    <input id="msgInput" autocomplete="off" placeholder="Type a message" />
+    <button id="sendBtn">Send</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const messagesEl = document.getElementById('messages');
+        const inputEl = document.getElementById('msgInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        function addMessage(text) {
+            const li = document.createElement('li');
+            li.textContent = text;
+            messagesEl.appendChild(li);
+        }
+
+        socket.on('connect', () => {
+            addMessage('Connected to server. Client id: ' + socket.id);
+        });
+
+        socket.on('message', (data) => {
+            addMessage('Server: ' + data);
+        });
+
+        sendBtn.addEventListener('click', () => {
+            const msg = inputEl.value.trim();
+            if (!msg) return;
+            // send message to server
+            socket.emit('clientMessage', msg);
+            addMessage('You: ' + msg);
+            inputEl.value = '';
+        });
+
+        // also send on Enter
+        inputEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') sendBtn.click();
+        });
+    </script>
+</body>
+</html>

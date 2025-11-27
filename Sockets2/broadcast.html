@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broadcast Messages</title>
+</head>
+<body>
+
+    
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+
+        const messagesBox = document.getElementById('messages');
+
+        socket.on("Broadcast", (data) => {
+            const div = document.createElement('div');
+            div.classList.add("msg");
+            div.textContent = data;
+
+            messagesBox.appendChild(div);
+            messagesBox.scrollTop = messagesBox.scrollHeight; // auto-scroll
+        });
+    </script>
+
+</body>
+</html>
